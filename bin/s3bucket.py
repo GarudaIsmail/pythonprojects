@@ -12,6 +12,23 @@ trg_accountid.append(os.getenv("trg_accountid"))
 ami_list = os.getenv("ami_name")
 role_arn = "arn:aws:iam::"+accountid+":role/"+rolename
 
+sts_connection = boto3.client('sts')
+    acct_b = sts_connection.assume_role(
+        RoleArn=role_arn,
+        RoleSessionName="ami_account"
+    )
+    
+    ACCESS_KEY = acct_b['Credentials']['AccessKeyId']
+    SECRET_KEY = acct_b['Credentials']['SecretAccessKey']
+    SESSION_TOKEN = acct_b['Credentials']['SessionToken']
+    
+    client = boto3.client(
+        'ec2',
+        aws_access_key_id=ACCESS_KEY,
+        aws_secret_access_key=SECRET_KEY,
+        aws_session_token=SESSION_TOKEN,
+    )
+
 def list_all_buckets():
     # Retrieve the list of existing buckets
     s3 = boto3.client('s3')
@@ -23,7 +40,7 @@ def list_all_buckets():
         print(f'  {bucket["Name"]}')
 
 def amisharing():
-    client = boto3.client('ec2', region_name=region)
+    #client = boto3.client('ec2', region_name=region)
     response = client.describe_images(Owners=['self'])
 #     print(response)
     try:
