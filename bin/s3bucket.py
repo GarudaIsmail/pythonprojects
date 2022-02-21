@@ -4,7 +4,7 @@ import time
 import sys
 import os
 
-accountid = os.getenv("accountid")
+accountid = os.getenv("AccountId")
 region = os.getenv("region")
 trg_accountid = []
 trg_accountid.append(os.getenv("trg_accountid"))
