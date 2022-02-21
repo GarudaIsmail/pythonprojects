@@ -24,6 +24,7 @@ client = boto3.client(
         aws_access_key_id=ACCESS_KEY,
         aws_secret_access_key=SECRET_KEY,
         aws_session_token=SESSION_TOKEN,
+        region_name=region,
     )
 
 def list_all_buckets():
