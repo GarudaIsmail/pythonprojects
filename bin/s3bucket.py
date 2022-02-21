@@ -5,10 +5,12 @@ import sys
 import os
 
 accountid = os.getenv("AccountId")
+rolename = os.getenv("RoleName")
 region = os.getenv("region")
 trg_accountid = []
 trg_accountid.append(os.getenv("trg_accountid"))
 ami_list = os.getenv("ami_name")
+role_arn = "arn:aws:iam::accountid:role/rolename"
 
 def list_all_buckets():
     # Retrieve the list of existing buckets
@@ -46,4 +48,5 @@ if __name__ == "__main__":
     print('region:', region)
     print('target account id:', trg_accountid)
     print('AMI id:', ami_list)
+    print('role_arn',role_arn)
     amisharing()
