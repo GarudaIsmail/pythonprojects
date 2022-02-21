@@ -13,10 +13,7 @@ ami_list = os.getenv("ami_name")
 role_arn = "arn:aws:iam::"+accountid+":role/"+rolename
 
 sts_connection = boto3.client('sts')
-    acct_b = sts_connection.assume_role(
-        RoleArn=role_arn,
-        RoleSessionName="ami_account"
-    )
+    acct_b = sts_connection.assume_role(RoleArn=role_arn,RoleSessionName="ami_account")
     
     ACCESS_KEY = acct_b['Credentials']['AccessKeyId']
     SECRET_KEY = acct_b['Credentials']['SecretAccessKey']
