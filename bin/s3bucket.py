@@ -10,7 +10,7 @@ region = os.getenv("region")
 trg_accountid = []
 trg_accountid.append(os.getenv("trg_accountid"))
 ami_list = os.getenv("ami_name")
-role_arn = "arn:aws:iam::accountid:role/rolename"
+role_arn = "arn:aws:iam::accountid:role/os.getenv("RoleName")"
 
 def list_all_buckets():
     # Retrieve the list of existing buckets
