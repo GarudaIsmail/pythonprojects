@@ -21,7 +21,7 @@ pipeline {
                     //returnStdout: true
                 //)
                 sh "chmod +x ${env.WORKSPACE}/shell/config.sh"
-                sh "${env.WORKSPACE}/shell/config.sh '${params.accountid}' '${params.rolename}' '${params.region}' '${params.trg_accountid}' '${params.ami_name}'"
+                sh "${env.WORKSPACE}/shell/config.sh '${params.AccountId}' '${params.RoleName}' '${params.region}' '${params.trg_accountid}' '${params.ami_name}'"
                 // sh "aws sts get-caller-identity"
             }
         }
